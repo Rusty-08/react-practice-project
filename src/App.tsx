@@ -1,28 +1,55 @@
 import { useState, useEffect } from 'react';
-import Alert from './components/Alert';
 import Button from './components/Button';
 import ListGroup from './components/ListGroup';
+import Post from './views/Post';
+import Comment from './views/Comment';
+import User from './views/User';
 
 function App() {
 
-  let [ showAlert, setAlertVisibility ] = useState(false)
-  let timeout = 0
+  const [ resourceType, setResourceType ] = useState('posts')
+  const [ items, setItems ] = useState([])
+  const [ isLoading, setLoading ] = useState(false)
 
   useEffect(() => {
-    if (showAlert) {
-      timeout = setTimeout(() => {
-        setAlertVisibility(false)
-      }, 5000)
+    const fetchData = async () => {
+      try {
+        setLoading(true)
+        const response = await fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
+        const json = await response.json()
+        setItems(json)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      } finally {
+        setLoading(false)
+      }
     }
-
-    return () => clearTimeout(timeout)
-  }, [showAlert])
+    
+    fetchData()
+  }, [resourceType])
 
   return (
-    <div>
-      {showAlert && <Alert type='danger'>Danger Alert</Alert>}
-      <Button color='primary' onCLick={()=>setAlertVisibility(true)}>Toggle Alert</Button>
-    </div>
+    <>
+      <section className='p-5 vmin-100 d-flex justify-content-center align-items-center flex-column gap-3'>
+        <div className='btn-group'>
+          <Button color={ resourceType == 'posts' ? 'primary' : 'secondary' } onCLick={()=>setResourceType('posts')}>Posts</Button>
+          <Button color={ resourceType == 'users' ? 'primary' : 'secondary' } onCLick={()=>setResourceType('users')}>Users</Button>
+          <Button color={ resourceType == 'comments' ? 'primary' : 'secondary' } onCLick={()=>setResourceType('comments')}>Comments</Button>
+        </div>
+        <div className="d-flex w-100 gap-3 justify-content-start align-items-center flex-column">
+          {
+            isLoading ? (
+              <p className='mt-5'>Loading...</p>
+            ) : 
+              items.map(item => 
+                  resourceType == 'posts' && <Post post={item}/>
+                  || resourceType == 'comments' && <Comment comment={item}/>
+                  || resourceType == 'users' && <User user={item}/>
+              )
+          }
+        </div>
+      </section>
+    </>
   )
 }
 

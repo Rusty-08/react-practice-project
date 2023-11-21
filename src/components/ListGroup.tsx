@@ -3,10 +3,9 @@ import { MouseEvent, useState } from 'react'
 interface Props {
   items: string[]
   heading: string
-  onSelectItem: (item: string) => void
 }
 
-function ListGroup({ items, heading, onSelectItem }: Props) {
+function ListGroup({ items, heading }: Props) {
   
   const [selectedList, selectList] = useState(0)
 
@@ -23,10 +22,6 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
                 : "list-group-item"
               }
               key={item}
-              onClick={() => {
-                selectList(index)
-                onSelectItem(item)
-              }}
             >
               { item }
             </li>
