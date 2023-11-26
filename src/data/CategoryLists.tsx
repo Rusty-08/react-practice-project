@@ -1,0 +1,20 @@
+export const CategoryLists = [
+  "All",
+  "JavaScript",
+  "Computers",
+  "Mixes",
+  "Music",
+  "Gaming",
+  "iOS",
+  "Artificial intelegence",
+  "Podcasts",
+  "Sales",
+  "NBA",
+  "Anime",
+  "Manga",
+  "Science",
+  "Global news",
+  "Recently uploaded",
+  "Watched",
+  "New to you"
+]
