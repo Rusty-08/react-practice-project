@@ -2,8 +2,7 @@ import { VariantProps, cva } from 'class-variance-authority'
 import React, { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const imageStyles = cva(
-  [],
+const imageStyles = cva([],
   {
     variants: {
       variant: {
