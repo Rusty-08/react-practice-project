@@ -26,7 +26,7 @@ function Category({ categories }: CatoryProps) {
   }
 
   return (
-    <div className="relative flex items-center">
+    <div className="relative pb-8 flex items-center">
       <div ref={containerRef} onScroll={handleScroll} className='scroll-smooth overflow-x-scroll scrollbar-hide'>
         <div className="flex scroll-smooth gap-3 whitespace-nowrap w-[max-content]">
           {categories.map((category, index) => (

@@ -2,12 +2,12 @@ import { VariantProps, cva } from 'class-variance-authority'
 import React, { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const imageStyles = cva([],
+const imageStyles = cva(['transition-all'],
   {
     variants: {
       variant: {
         default: ["bg-cover", "w-full", "h-full"],
-        video: ["rounded-2", "w-full", "bg-cover"],
+        video: ["rounded-xl", "w-full", "bg-cover"],
         profile: ["rounded-full", "w-8", "h-8"]
       }
     },

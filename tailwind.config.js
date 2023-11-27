@@ -12,8 +12,8 @@ export default {
         secondary: {
           DEFAULT: colors.neutral[100],
           hover: colors.neutral[200],
-          border: colors.neutral[400],
-          text: colors.neutral[500],
+          border: colors.neutral[300],
+          text: colors.neutral[600],
           dark: colors.neutral[800],
           ["dark-hover"]: colors.neutral[900]
         }

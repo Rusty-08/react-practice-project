@@ -34,9 +34,9 @@ function PageHeader() {
           <input 
             type="text" 
             placeholder='Search'
-            className='peer h-10 flex-grow lg:ml-10 pb-0.5 placeholder:text-secondary-text outline-none border border-secondary-hover focus:border-inset focus:border-blue-800 focus:lg:ps-14 focus:ml-0 focus:shadow-inner px-4 rounded-s-full' />
+            className='peer h-10 flex-grow lg:ml-10 pb-0.5 placeholder:text-neutral-500 outline-none border border-secondary-border focus:border-inset focus:border-blue-800 focus:lg:ps-[3.75rem] focus:ml-0 focus:shadow-inner px-5 rounded-s-full' />
           <Search strokeWidth={1} className='invisible peer-focus:lg:visible absolute left-5 w-5' />
-          <Button variant='ghost' size='icon' className='flex-shrink-0 rounded-none py-1.5 bg-neutral-100 border border-secondary-hover border-s-0 rounded-e-full w-16'>
+          <Button variant='ghost' size='icon' className='flex-shrink-0 rounded-none py-1.5 bg-neutral-100 border border-secondary-border border-s-0 rounded-e-full w-16'>
             <Search className='w-5' strokeWidth={1}/>
           </Button>
           <Button 
