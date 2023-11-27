@@ -8,7 +8,7 @@ const buttonStyles = cva(
     variants: {
       variant: {
         default: ["bg-secondary", "hover:bg-secondary-hover"],
-        ghost: ["hover:bg-gray-100"],
+        ghost: ["hover:bg-neutral-200"],
         dark: ["bg-secondary-dark", "text-white", "hover:bg-secondary-dark-hover"]
       },
       size: {

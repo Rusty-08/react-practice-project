@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react"
-import Button from "./Button"
+import Button from "../components/Button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 type CatoryProps = {
   categories: string[]
 }
 
-const TRANSLATE_AMOUNT = 200
+const SCROLL_AMOUNT = 200
 
 function Category({ categories }: CatoryProps) {
 
@@ -27,11 +27,8 @@ function Category({ categories }: CatoryProps) {
 
   return (
     <div className="relative flex items-center">
-      <div ref={containerRef} onScroll={handleScroll} className='scroll-x overflow-x-scroll scrollbar-hide'>
-        <div 
-          
-          className="flex gap-3 whitespace-nowrap transition-transform w-[max-content]"
-        >
+      <div ref={containerRef} onScroll={handleScroll} className='scroll-smooth overflow-x-scroll scrollbar-hide'>
+        <div className="flex scroll-smooth gap-3 whitespace-nowrap w-[max-content]">
           {categories.map((category, index) => (
             <Button 
               key={category}
@@ -53,13 +50,14 @@ function Category({ categories }: CatoryProps) {
           variant="ghost" 
           size="icon"
           onClick={() => {
-            const newScroll = scrollPosition - TRANSLATE_AMOUNT
-            return containerRef.current?.scrollTo(
-              newScroll, 0
-            )
+            const newScroll = scrollPosition - SCROLL_AMOUNT;
+            return containerRef.current?.scrollTo({
+              left: newScroll,
+              behavior: "smooth",
+            });
           }}
         >
-          <ChevronLeft />
+          <ChevronLeft strokeWidth={1}/>
         </Button>
         }
       </div>
@@ -70,13 +68,14 @@ function Category({ categories }: CatoryProps) {
           variant="ghost" 
           size="icon"
           onClick={() => {
-            const newScroll = scrollPosition + TRANSLATE_AMOUNT
-            return containerRef.current?.scrollTo(
-              newScroll, 0
-            )
+            const newScroll = scrollPosition + SCROLL_AMOUNT;
+            return containerRef.current?.scrollTo({
+              left: newScroll,
+              behavior: "smooth",
+            });
           }}
         >
-          <ChevronRight />
+          <ChevronRight strokeWidth={1}/>
         </Button>
         }
       </div>
