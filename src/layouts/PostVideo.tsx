@@ -18,7 +18,7 @@ function PostVideo({ posts }: Posts) {
   return (
     <>
       {posts.map((post, index) => (
-        <div key={index} className="flex flex-col">
+        <div key={index} className="flex flex-col my-3">
           <Image src={post.image} variant="video" />
           <div className="flex gap-2 py-3">
             <Image src={post.profile} variant="profile" />

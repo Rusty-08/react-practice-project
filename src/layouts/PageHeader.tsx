@@ -11,7 +11,7 @@ function PageHeader() {
   return (
     // HEADER
     <>
-      <div className='flex z-10 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4'>
+      <div className='flex z-20 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4'>
         <div className={`${viewFullSearch ? 'hidden' : 'flex'} gap-4 h-full items-center flex-shrink-0`}>
           <Button variant='ghost' size='icon'>
             <Menu strokeWidth={1} />
