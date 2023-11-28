@@ -11,10 +11,10 @@ function PageHeader() {
   return (
     // HEADER
     <>
-      <div className='flex gap-10 lg:gap-24 justify-between py-2 mx-4'>
-        <div className={`${viewFullSearch ? 'hidden' : 'flex'} gap-4 items-center flex-shrink-0`}>
+      <div className='flex z-10 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4'>
+        <div className={`${viewFullSearch ? 'hidden' : 'flex'} gap-4 h-full items-center flex-shrink-0`}>
           <Button variant='ghost' size='icon'>
-            <Menu strokeWidth={1}/>
+            <Menu strokeWidth={1} />
           </Button>
           <a href="/" className='flex items-center gap-2'>
             <PlaySquare className='text-red-500'/>
@@ -29,7 +29,7 @@ function PageHeader() {
             size='icon' 
             className={`${viewFullSearch ? 'flex mr-2' : 'hidden'}`}
           >
-            <ArrowLeft strokeWidth={1}/>
+            <ArrowLeft strokeWidth={1} />
           </Button>
           <input 
             type="text" 

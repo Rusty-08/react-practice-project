@@ -10,20 +10,26 @@ function App() {
   return (
     <div className='max-h-screen flex flex-col'>
       <PageHeader />
-      <div className="flex w-full">
-        {/* Sidebar */}
-        <div className="w-[4.5rem] p-1 flex flex-col flex-shrink-0">
-          <SidebarLinks />
-        </div>
+      <section className='w-full'>
+        <div className="flex mt-16">
+          {/* Sidebar */}
+          <aside>
+            <div className="w-[4.5rem] fixed top-16 p-1 flex flex-col flex-shrink-0">
+              <SidebarLinks />
+            </div>
+          </aside>
 
-        {/* Body */}
-        <div className="flex-grow px-6 py-2 overflow-x-hidden">
-          <Category categories={CategoryLists} />
-          <div className="grid grid-cols-3 gap-5">
-            <PostVideo posts={videoPosts} />
+          {/* Body */}
+          <div className="flex-grow ml-[4.5rem] px-6 py-3 overflow-x-hidden">
+            <div className='relative h-16'>
+              <Category categories={CategoryLists} />
+            </div>
+            <div className="grid grid-cols-3 gap-5">
+              <PostVideo posts={videoPosts} />
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

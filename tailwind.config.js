@@ -8,6 +8,13 @@ export default {
   ],
   theme: {
     extend: {
+      height: {
+        header: '4rem'
+      },
+      width: {
+        ['default-sidebar']: '4.5rem',
+        body: 'calc(100vw - 5rem)'
+      },
       colors: {
         secondary: {
           DEFAULT: colors.neutral[100],

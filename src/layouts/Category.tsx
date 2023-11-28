@@ -26,7 +26,7 @@ function Category({ categories }: CatoryProps) {
   }
 
   return (
-    <div className="relative pb-8 flex items-center">
+    <div className="py-2 pb-2.5 bg-white right-5 left-24 flex items-center fixed top-16">
       <div ref={containerRef} onScroll={handleScroll} className='scroll-smooth overflow-x-scroll scrollbar-hide'>
         <div className="flex scroll-smooth gap-3 whitespace-nowrap w-[max-content]">
           {categories.map((category, index) => (
@@ -45,38 +45,38 @@ function Category({ categories }: CatoryProps) {
       </div>
       <div className="absolute w-20 -translate-x-4 bg-gradient-to-r from-white from-50% to-transparent">
         {
-        scrollPosition > 0 &&
-        <Button 
-          variant="ghost" 
-          size="icon"
-          onClick={() => {
-            const newScroll = scrollPosition - SCROLL_AMOUNT;
-            return containerRef.current?.scrollTo({
-              left: newScroll,
-              behavior: "smooth",
-            });
-          }}
-        >
-          <ChevronLeft strokeWidth={1}/>
-        </Button>
+          scrollPosition > 0 &&
+          <Button 
+            variant="ghost" 
+            size="icon"
+            onClick={() => {
+              const newScroll = scrollPosition - SCROLL_AMOUNT;
+              return containerRef.current?.scrollTo({
+                left: newScroll,
+                behavior: "smooth",
+              });
+            }}
+          >
+            <ChevronLeft strokeWidth={1}/>
+          </Button>
         }
       </div>
       <div className="absolute right-0 w-20 translate-x-3 flex items-end justify-end bg-gradient-to-l from-white from-50% to-transparent">
         { 
-        !isScrollEnded &&
-        <Button 
-          variant="ghost" 
-          size="icon"
-          onClick={() => {
-            const newScroll = scrollPosition + SCROLL_AMOUNT;
-            return containerRef.current?.scrollTo({
-              left: newScroll,
-              behavior: "smooth",
-            });
-          }}
-        >
-          <ChevronRight strokeWidth={1}/>
-        </Button>
+          !isScrollEnded &&
+          <Button 
+            variant="ghost" 
+            size="icon"
+            onClick={() => {
+              const newScroll = scrollPosition + SCROLL_AMOUNT;
+              return containerRef.current?.scrollTo({
+                left: newScroll,
+                behavior: "smooth",
+              });
+            }}
+          >
+            <ChevronRight strokeWidth={1}/>
+          </Button>
         }
       </div>
     </div>
