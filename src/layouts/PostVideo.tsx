@@ -1,4 +1,4 @@
-import Image from "./Image"
+import Image from "../components/Image"
 
 type Posts = {
   posts: Props[]

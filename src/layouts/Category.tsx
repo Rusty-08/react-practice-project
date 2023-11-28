@@ -26,7 +26,7 @@ function Category({ categories }: CatoryProps) {
   }
 
   return (
-    <div className="py-2 pb-2.5 bg-white right-5 left-24 flex items-center fixed top-16">
+    <div className="py-2 pb-2.5 ps-6 pe-6 bg-white right-0 left-[4.5rem] flex items-center fixed top-16">
       <div ref={containerRef} onScroll={handleScroll} className='scroll-smooth overflow-x-scroll scrollbar-hide'>
         <div className="flex scroll-smooth gap-3 whitespace-nowrap w-[max-content]">
           {categories.map((category, index) => (
@@ -61,7 +61,7 @@ function Category({ categories }: CatoryProps) {
           </Button>
         }
       </div>
-      <div className="absolute right-0 w-20 translate-x-3 flex items-end justify-end bg-gradient-to-l from-white from-50% to-transparent">
+      <div className="absolute right-0 w-20 -translate-x-2 flex items-end justify-end bg-gradient-to-l from-white from-50% to-transparent">
         { 
           !isScrollEnded &&
           <Button 
