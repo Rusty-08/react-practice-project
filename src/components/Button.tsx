@@ -16,12 +16,11 @@ const buttonStyles = cva(
         default: ["rounded", "p-2"],
         icon: [
           "rounded-full", 
-          "w-10", 
-          "h-10", 
+          "w-[2.5rem]", 
+          "h-[2.5rem]", 
           "flex", 
           "items-center", 
           "justify-center", 
-          "p-2.5",
         ],
         ["show-more"]: [
           "rounded-full",

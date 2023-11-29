@@ -7,7 +7,7 @@ const imageStyles = cva(['transition-all'],
     variants: {
       variant: {
         default: ["bg-cover", "w-full", "h-full"],
-        video: ["rounded-xl", "w-full", "bg-cover"],
+        video: ["md:rounded-xl", "rounded-none", "w-full", "bg-cover"],
         profile: ["rounded-full", "w-8", "h-8"]
       }
     },

@@ -40,7 +40,7 @@ export const videoPosts = [
     profile: profle,
     title: 'I forgot the title, soooooooooo, well good',
     name: 'Con D. Oriano',
-    view: '2M views',
+    views: '2M views',
     date: '2 years ago',
   },
   {

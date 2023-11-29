@@ -12,7 +12,7 @@ function PageHeader() {
     // HEADER
     <>
       <div className='flex z-20 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4'>
-        <div className={`${viewFullSearch ? 'hidden' : 'flex'} gap-4 h-full items-center flex-shrink-0`}>
+        <div className={`${viewFullSearch ? 'hidden' : 'flex'} md:gap-4 gap-2 h-full items-center flex-shrink-0`}>
           <Button variant='ghost' size='icon'>
             <Menu strokeWidth={1} />
           </Button>
@@ -42,20 +42,17 @@ function PageHeader() {
           <Button 
             variant={viewFullSearch ? 'ghost' : 'default'} 
             size='icon' 
-            className={`${viewFullSearch ? 'ml-2' : 'mx-4'} flex-shrink-0`}
+            className='hidden md:flex ml-3 flex-shrink-0'
           >
             <Mic strokeWidth={1}/>
           </Button>
         </div>
         {/* PROFILE SIDE */}
-        <div className={`${viewFullSearch ? 'hidden' : 'flex'} items-center md:gap-2 me-4 flex-shrink-0`}>
+        <div className={`${viewFullSearch ? 'hidden' : 'flex'} items-center md:gap-2 md:me-4 flex-shrink-0`}>
           <Button onClick={()=>setViewFullSearch(true)} variant='ghost' size='icon' className='md:hidden flex'>
             <Search className='w-5' strokeWidth={1}/>
           </Button>
-          <Button variant='ghost' size='icon' className='md:hidden fill-secondary-dark flex'>
-            <Mic strokeWidth={1}/>
-          </Button>
-          <Button variant='ghost' size='icon'>
+          <Button className='hidden md:flex' variant='ghost' size='icon'>
             <Video strokeWidth={1}/>
           </Button>
           <Button variant='ghost' size='icon'>

@@ -17,7 +17,7 @@ function Shorts({ shorts }:Shorts) {
 
   return (
     <div>
-      <div className="grid pb-3 grid-cols-5 gap-5">
+      <div className="grid pb-3 lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-5">
         {
         (expanded
         ? shorts.concat(...shorts.toReversed())
@@ -25,7 +25,7 @@ function Shorts({ shorts }:Shorts) {
         .map((short, index) => (
           <div key={index} className="flex flex-col gap-0">
             <Image variant="video" src={short.image} />
-            <p className="mt-3 font-medium">{ short.title }</p>
+            <p className="mt-3 mb-1 font-medium">{ short.title }</p>
             <span className="text-secondary-text text-sm">{ short.views }</span>
           </div>
         ))
