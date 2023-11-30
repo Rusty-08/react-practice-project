@@ -10,7 +10,9 @@ const buttonStyles = cva(
         default: ["bg-secondary", "hover:bg-secondary-hover"],
         ghost: ["hover:bg-neutral-200"],
         dark: ["bg-secondary-dark", "text-white", "hover:bg-secondary-dark-hover"],
-        separator: ["bg-white", "hover:bg-neutral-200"]
+        separator: ["bg-white", "hover:bg-neutral-200"],
+        notification: ["hover:bg-neutral-200 before:content-['2'] before:text-white before:flex before:items-center before:justify-center before:rounded-full before:border-2 before:border-white before:absolute before:top-[0.1rem] text-xs before:right-0 before:bg-red-600 before:w-5 before:h-5 relative"],
+        primary: ["text-blue-600 text-sm font-medium hover:bg-sky-100"]
       },
       size: {
         default: ["rounded", "p-2"],
@@ -18,6 +20,7 @@ const buttonStyles = cva(
           "rounded-full", 
           "w-[2.5rem]", 
           "h-[2.5rem]", 
+          "p-[0.6rem]",
           "flex", 
           "items-center", 
           "justify-center", 
@@ -25,7 +28,8 @@ const buttonStyles = cva(
         ["show-more"]: [
           "rounded-full",
           "py-1.5",
-          "px-32",
+          "md:w-1/3",
+          "w-full",
           "flex", 
           "items-center", 
           "justify-center", 

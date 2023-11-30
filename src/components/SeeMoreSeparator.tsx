@@ -8,7 +8,7 @@ type Props = {
 
 function SeeMoreSeparator({ onExpand, isExpanded }:Props) {
   return (
-    <div className="md:before:content-[''] md:before:border-b md:before:absolute md:before:w-full before:hidden relative flex items-center flex-grow justify-center pt-5">
+    <div className="md:before:content-[''] md:before:border-b md:before:absolute md:before:w-full relative flex items-center flex-grow justify-center pt-5">
       <Button 
         className='z-10 whitespace-nowrap text-sm font-medium' 
         variant="separator" 
@@ -16,11 +16,7 @@ function SeeMoreSeparator({ onExpand, isExpanded }:Props) {
         onClick={onExpand}
       >
         { !isExpanded ? 'See more':'See less' }
-        {
-        !isExpanded
-        ? <ChevronDown className='text-sm' strokeWidth={1} />
-        : <ChevronUp className='text-sm' strokeWidth={1} />
-        }
+        <ChevronDown className={`${ isExpanded && 'rotate-180' } transition-transform text-sm`} strokeWidth={1} />
       </Button>
     </div>
   )

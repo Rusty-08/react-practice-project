@@ -34,7 +34,6 @@ function App() {
             <PostVideo posts={videoPosts} />
             {/* SHORT VIDEO POST */}
             <div className="px-6 mt-2 mb-5">
-              <ShortsHeader />
               <Shorts shorts={shorts} />
             </div>
             {/* VIDEO POST */}

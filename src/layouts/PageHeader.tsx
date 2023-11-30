@@ -17,7 +17,7 @@ function PageHeader() {
             <Menu strokeWidth={1} />
           </Button>
           <a href="/" className='flex items-center gap-2'>
-            <PlaySquare className='text-red-500'/>
+            <PlaySquare className='text-red-200 fill-red-500'/>
             <h1 className='text-lg font-bold text-neutral-800'>TubeTube</h1>
           </a>
         </div>
@@ -31,14 +31,16 @@ function PageHeader() {
           >
             <ArrowLeft strokeWidth={1} />
           </Button>
-          <input 
-            type="text" 
-            placeholder='Search'
-            className='peer h-10 flex-grow lg:ml-10 pb-0.5 placeholder:text-neutral-500 outline-none border border-secondary-border focus:border-inset focus:border-blue-800 focus:lg:ps-[3.75rem] focus:ml-0 focus:shadow-inner px-5 rounded-s-full' />
-          <Search strokeWidth={1} className='invisible peer-focus:lg:visible absolute left-5 w-5' />
-          <Button variant='ghost' size='icon' className='flex-shrink-0 rounded-none py-1.5 bg-neutral-100 border border-secondary-border border-s-0 rounded-e-full w-16'>
-            <Search className='w-5' strokeWidth={1}/>
-          </Button>
+          <form action="" className='flex flex-grow items-center'>
+            <input 
+              type="text" 
+              placeholder='Search'
+              className='peer text-base py-4 h-10 flex-grow lg:ml-10 placeholder:text-neutral-500 outline-none border border-secondary-border focus:border-inset focus:border-blue-800 focus:lg:ps-[3.75rem] focus:ml-0 focus:shadow-inner px-5 rounded-s-full' />
+            <Search strokeWidth={1} className='invisible peer-focus:lg:visible absolute left-5 w-5' />
+            <Button onSubmit={(e)=>e.preventDefault} variant='ghost' size='icon' className='flex-shrink-0 rounded-none py-1.5 bg-neutral-100 border border-secondary-border border-s-0 rounded-e-full w-16'>
+              <Search className='w-5' strokeWidth={1}/>
+            </Button>
+          </form>
           <Button 
             variant={viewFullSearch ? 'ghost' : 'default'} 
             size='icon' 
@@ -48,14 +50,14 @@ function PageHeader() {
           </Button>
         </div>
         {/* PROFILE SIDE */}
-        <div className={`${viewFullSearch ? 'hidden' : 'flex'} items-center md:gap-2 md:me-4 flex-shrink-0`}>
+        <div className={`${viewFullSearch ? 'hidden' : 'flex'} items-center gap-1 md:gap-2 md:me-4 flex-shrink-0`}>
           <Button onClick={()=>setViewFullSearch(true)} variant='ghost' size='icon' className='md:hidden flex'>
             <Search className='w-5' strokeWidth={1}/>
           </Button>
           <Button className='hidden md:flex' variant='ghost' size='icon'>
             <Video strokeWidth={1}/>
           </Button>
-          <Button variant='ghost' size='icon'>
+          <Button variant='notification' size='icon'>
             <Bell strokeWidth={1}/>
           </Button>
           <a href="/" className='flex ml-1 items-center'>
