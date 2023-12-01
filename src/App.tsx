@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PageHeader from './layouts/PageHeader'
 import Category from './layouts/Category'
 import { CategoryLists } from './data/CategoryLists'
@@ -11,12 +11,17 @@ import { ChevronDown, FileVideo2 } from 'lucide-react'
 import Button from './components/Button'
 import SeeMoreSeparator from './components/SeeMoreSeparator'
 import ShortsHeader from './layouts/ShortsHeader'
+import ExpandSidebar from './layouts/ExpandSidebar'
 
 function App() {
+
+  const [showSidebar, setShowSidebar] = useState(false)
+
   return (
     <div className='max-h-screen flex flex-col'>
-      <PageHeader />
-      <section className='w-full'>
+      <PageHeader showSidebar={()=>setShowSidebar(true)} />
+      <section className='w-full relative'>
+        <ExpandSidebar setDisplay={()=>setShowSidebar(false)} onDisplay={showSidebar} />
         <div className="flex mt-14">
           {/* SIDEBAR */}
           <aside>

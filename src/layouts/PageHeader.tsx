@@ -4,7 +4,11 @@ import React, { useState } from 'react'
 import Button from '../components/Button'
 import Image from '../components/Image'
 
-function PageHeader() {
+type Props = {
+  showSidebar: () => void
+}
+
+function PageHeader({ showSidebar }:Props) {
 
   const [viewFullSearch, setViewFullSearch] = useState(false)
 
@@ -12,12 +16,12 @@ function PageHeader() {
     // HEADER
     <>
       <div className='flex z-20 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4'>
-        <div className={`${viewFullSearch ? 'hidden' : 'flex'} md:gap-4 gap-2 h-full items-center flex-shrink-0`}>
-          <Button variant='ghost' size='icon'>
+        <div className={`${viewFullSearch ? 'hidden' : 'flex'} md:gap-3 gap-2 h-full items-center flex-shrink-0`}>
+          <Button onClick={showSidebar} variant='ghost' size='icon'>
             <Menu strokeWidth={1} />
           </Button>
           <a href="/" className='flex items-center gap-2'>
-            <PlaySquare className='text-red-200 fill-red-500'/>
+            <PlaySquare className='text-red-200 w-7 h-7 fill-red-500'/>
             <h1 className='text-lg font-bold text-neutral-800'>TubeTube</h1>
           </a>
         </div>

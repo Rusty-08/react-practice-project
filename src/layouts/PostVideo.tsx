@@ -16,7 +16,7 @@ type Props = {
 
 function PostVideo({ posts }: Posts) {
   return (
-    <div className="grid px-6 pb-3 md:grid-cols-3 grid-cols-1 md:gap-4">
+    <div className="grid px-6 pb-3 md:grid-cols-3 xl:grid-cols-4 grid-cols-1 md:gap-4">
       {posts.map((post, index) => (
         <div key={index} className="flex flex-col my-4">
           <div className="relative">
