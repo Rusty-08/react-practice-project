@@ -1,6 +1,6 @@
-import { Menu, Video, PlaySquare, Mic, Upload, Search, Bell, ArrowLeft } from 'lucide-react'
+import { Menu, Video, PlaySquare, Mic, Upload, Search, Bell, ArrowLeft, X } from 'lucide-react'
 import profle from '../assets/luffy.jpg'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Button from '../components/Button'
 import Image from '../components/Image'
 
@@ -11,6 +11,18 @@ type Props = {
 function PageHeader({ showSidebar }:Props) {
 
   const [viewFullSearch, setViewFullSearch] = useState(false)
+  const [searchContent, setSearchContent] = useState<string>('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchContent(event.target.value);
+  }
+
+  const eraseInputValue = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    setSearchContent('')
+    inputRef.current?.focus()
+  }
 
   return (
     // HEADER
@@ -36,11 +48,22 @@ function PageHeader({ showSidebar }:Props) {
             <ArrowLeft strokeWidth={1} />
           </Button>
           <form action="" className='flex flex-grow items-center'>
-            <input 
-              type="text" 
-              placeholder='Search'
-              className='peer text-base py-4 h-10 flex-grow lg:ml-10 placeholder:text-neutral-500 outline-none border border-secondary-border focus:border-inset focus:border-blue-800 focus:lg:ps-[3.75rem] focus:ml-0 focus:shadow-inner px-5 rounded-s-full' />
-            <Search strokeWidth={1} className='invisible peer-focus:lg:visible absolute left-5 w-5' />
+            <div className="relative flex flex-grow items-center">
+              <input 
+                ref={inputRef}
+                onChange={handleInputChange}
+                type="text" 
+                placeholder='Search'
+                value={searchContent}
+                className='peer text-base flex-grow py-4 h-10 lg:ml-8 placeholder:text-neutral-500 outline-none border border-secondary-border focus:border-inset focus:border-blue-800 focus:lg:ps-[3.25rem] focus:ml-0 focus:shadow-inner px-5 pe-14 rounded-s-full'/>
+              {
+                searchContent !== '' &&
+                <Button type='button' onClick={(e)=>eraseInputValue(e)} className='absolute w-9 h-9 right-[2px]' variant="ghost" size="icon">
+                  <X />
+                </Button>
+              }
+              <Search strokeWidth={1} className='invisible peer-focus:lg:visible absolute z-10 left-5 w-5' />
+            </div>
             <Button onSubmit={(e)=>e.preventDefault} variant='ghost' size='icon' className='flex-shrink-0 rounded-none py-1.5 bg-neutral-100 border border-secondary-border border-s-0 rounded-e-full w-16'>
               <Search className='w-5' strokeWidth={1}/>
             </Button>
