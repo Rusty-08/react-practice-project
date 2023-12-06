@@ -26,7 +26,7 @@ function Category({ categories }: CatoryProps) {
   }
 
   return (
-    <div className="py-2 pb-2.5 ps-6 pe-6 bg-white right-0 md:left-[4.5rem] left-0 flex items-center fixed top-[3.9rem]">
+    <div className="py-2 pb-2.5 ps-6 pe-6 bg-white scroll-smooth right-0 md:left-[4.5rem] left-0 flex items-center fixed top-[3.9rem]">
       <div ref={containerRef} onScroll={handleScroll} className='scroll-smooth overflow-x-scroll scrollbar-hide'>
         <div className="flex scroll-smooth gap-3 whitespace-nowrap w-[max-content]">
           {categories.map((category, index) => (

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../components/Button'
 import { Menu, PlaySquare } from 'lucide-react'
 
@@ -10,7 +10,7 @@ type Props = {
 function ExpandSidebar({ onDisplay, setDisplay }: Props) {
   return (
     onDisplay &&
-    <div className='w-full z-50 h-screen overflow-hidden fixed bg-black bg-opacity-50'>
+    <div className='w-full z-50 h-screen overflow-y-scroll fixed bg-black bg-opacity-50'>
       <div className={`${onDisplay ? ' translate-x-0':'translate-x-[-15rem]'} transition-transform w-[15rem] flex items-start bg-white h-full`}>
         <div className='md:gap-3 h-header px-4 gap-2 flex items-center justify-center'>
           <Button onClick={setDisplay} variant='ghost' size='icon'>
