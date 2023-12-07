@@ -16,42 +16,26 @@ import ExpandSidebar from './layouts/ExpandSidebar'
 function App() {
 
   const [showSidebar, setShowSidebar] = useState(false)
-  const scrollRef = useRef<HTMLDivElement | null>(null)
-
-  const handleSidebarToggle = () => {
-    const container = scrollRef.current
-
-    if (container) {
-      container.scrollTop = container.scrollHeight
-      if (showSidebar) {
-        document.body.style.overflowY = 'auto'
-      } else {
-        document.body.style.overflowY = 'hidden'
-      }
-    }
-  }
 
   useEffect(() => {
-    return () => {
-      if (scrollRef.current) {
-        scrollRef.current.scrollTop = 0
-      }
+    if (showSidebar) {
+      document.body.style.overflowY = 'hidden'
+    } else {
+      document.body.style.overflowY = 'auto'
     }
-  }, [])
+  }, [showSidebar])
 
   return (
-    <div ref={scrollRef} className={`${showSidebar && 'me-4'} max-h-screen flex flex-col`}>
+    <div className={`${showSidebar && 'me-4'} max-h-screen flex flex-col`}>
       <PageHeader 
         isSidebarOpen={showSidebar}
         showSidebar={() => {
           setShowSidebar(true)
-          handleSidebarToggle()
         }
       } />
       <section className='w-full relative'>
         <ExpandSidebar setDisplay={() => {
             setShowSidebar(false)
-            handleSidebarToggle()
           } 
         }
         onDisplay={showSidebar} />

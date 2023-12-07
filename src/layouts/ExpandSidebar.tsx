@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Button from '../components/Button'
 import { Menu, PlaySquare } from 'lucide-react'
+import { pages } from '../data/SidebarCategories'
+import SidebarButtons from './SidebarButtons'
+
 
 type Props = {
   onDisplay: boolean
@@ -23,6 +26,9 @@ function ExpandSidebar({ onDisplay, setDisplay }: Props) {
                 <PlaySquare className='text-red-200 w-7 h-7 fill-red-500'/>
                 <h1 className='text-lg font-bold text-neutral-800'>TubeTube</h1>
               </a>
+            </div>
+            <div className="">
+              <SidebarButtons component={pages} />
             </div>
           </div>
         </div>

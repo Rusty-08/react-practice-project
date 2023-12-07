@@ -11,7 +11,7 @@ const buttonStyles = cva(
         ghost: ["hover:bg-neutral-200"],
         dark: ["bg-secondary-dark", "text-white", "hover:bg-secondary-dark-hover"],
         separator: ["bg-white", "hover:bg-neutral-200"],
-        notification: ["hover:bg-neutral-200 before:content-['2'] before:text-white before:flex before:items-center before:justify-center before:rounded-full before:border-2 before:border-white before:absolute before:top-[0.1rem] text-xs before:right-0 before:bg-red-600 before:w-5 before:h-5 relative"],
+        notification: ["hover:bg-gray-200 before:content-['2'] before:text-white before:flex before:items-center before:justify-center before:rounded-full before:border-2 before:border-white before:absolute before:top-[0.1rem] text-xs before:right-0 before:bg-red-600 before:w-5 before:h-5 relative"],
         primary: ["text-blue-600 text-sm font-medium hover:bg-sky-100"]
       },
       size: {
