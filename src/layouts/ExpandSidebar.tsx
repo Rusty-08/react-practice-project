@@ -18,12 +18,12 @@ function ExpandSidebar({ onDisplay, setDisplay }: Props) {
           <div
             className={`transform ${onDisplay ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-1000 w-60 bg-white h-full`}
           >
-            <div className="h-16 px-4 flex items-center justify-start gap-3">
+            <div className="h-header px-4 flex items-center justify-start gap-3">
               <Button onClick={setDisplay} variant="ghost" size="icon">
                 <Menu strokeWidth={1} />
               </Button>
               <a href="/" className='flex items-center gap-2'>
-                <PlaySquare className='text-red-200 w-7 h-7 fill-red-500'/>
+                <PlaySquare className='text-red-100 w-7 h-7 fill-[#FF0000]'/>
                 <h1 className='text-lg font-bold text-neutral-800'>TubeTube</h1>
               </a>
             </div>

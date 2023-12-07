@@ -42,13 +42,13 @@ function App() {
         <div className="flex mt-14">
           {/* SIDEBAR */}
           <aside>
-            <div className="w-[4.5rem] z-20 bg-white fixed top-16 bottom-0 p-1 hidden md:flex flex-col flex-shrink-0">
+            <div className="w-[4.5rem] z-20 bg-white fixed top-14 bottom-0 p-1 hidden md:flex flex-col flex-shrink-0">
               <SidebarLinks />
             </div>
           </aside>
 
           {/* BODY */}
-          <div className="flex-grow md:ml-[4.5rem] py-3 overflow-x-hidden">
+          <div className="flex-grow md:ml-[4.5rem] py-2 overflow-x-hidden">
             <div className='relative h-16 z-20'>
               <Category isSidebarOpen={showSidebar} categories={CategoryLists} />
             </div>

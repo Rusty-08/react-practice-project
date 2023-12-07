@@ -77,7 +77,7 @@ function PostVideo({ posts }: Posts) {
             />  
             {isPlaying == index &&
             <Button 
-              className='absolute bg-opacity-20 rounded-md w-9 h-9 z-[15] top-2 right-2' 
+              className='absolute hover:bg-opacity-40 hover:backdrop-blur-sm bg-opacity-20 rounded-md w-9 h-9 z-[15] top-2 right-2' 
               variant="dark" 
               size="icon"
               onClick={(e) => {

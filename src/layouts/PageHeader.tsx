@@ -29,7 +29,7 @@ function PageHeader({ showSidebar, isSidebarOpen }:Props) {
     // HEADER
     <>
       <div className={
-          `flex z-20 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4 
+          `flex z-50 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4 
           ${isSidebarOpen && 'pe-8'}`
         }>
         <div className={`${viewFullSearch ? 'hidden' : 'flex'} md:gap-3 gap-2 h-full items-center flex-shrink-0`}>
@@ -37,7 +37,7 @@ function PageHeader({ showSidebar, isSidebarOpen }:Props) {
             <Menu strokeWidth={1} />
           </Button>
           <a href="/" className='flex items-center gap-2'>
-            <PlaySquare className='text-red-200 w-7 h-7 fill-red-500'/>
+            <PlaySquare className='text-red-100 w-7 h-7 fill-[#FF0000]'/>
             <h1 className='text-lg font-bold text-neutral-800'>TubeTube</h1>
           </a>
         </div>

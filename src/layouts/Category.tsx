@@ -27,8 +27,8 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
   }
 
   return (
-    <div className={`${isSidebarOpen && 'me-4'} py-2 pb-2.5 ps-6 pe-6 bg-white scroll-smooth right-0 md:left-[4.5rem] left-0 flex items-center fixed top-[3.9rem]`}>
-      <div ref={containerRef} onScroll={handleScroll} className='scroll-smooth overflow-x-scroll scrollbar-hide'>
+    <div className={`${isSidebarOpen && 'me-4'} ps-6 pe-6 bg-white scroll-smooth right-0 md:left-[4.5rem] left-0 flex items-center fixed top-[3.5rem]`}>
+      <div ref={containerRef} onScroll={handleScroll} className='scroll-smooth py-3 overflow-x-scroll scrollbar-hide'>
         <div className="flex scroll-smooth gap-3 whitespace-nowrap w-[max-content]">
           {categories.map((category, index) => (
             <Button 
@@ -37,7 +37,7 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
               onClick={()=>setActiveCategory(index)}
               className={`
                 ${(scrollPosition > 0 && index == 0) ? 'invisible':'visible'}
-                px-3 py-2 text-sm font-medium rounded-lg whitespace-nowrap`}
+                px-3 py-1.5 text-sm font-medium rounded-lg whitespace-nowrap`}
             >
               {category}
             </Button>

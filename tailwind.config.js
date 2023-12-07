@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       height: {
-        header: '4rem'
+        header: '3.5rem'
       },
       width: {
         ['default-sidebar']: '4.5rem',
