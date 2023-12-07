@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PageHeader from './layouts/PageHeader'
 import Category from './layouts/Category'
 import { CategoryLists } from './data/CategoryLists'
@@ -16,12 +16,45 @@ import ExpandSidebar from './layouts/ExpandSidebar'
 function App() {
 
   const [showSidebar, setShowSidebar] = useState(false)
+  const scrollRef = useRef<HTMLDivElement | null>(null)
+
+  const handleSidebarToggle = () => {
+    const container = scrollRef.current
+
+    if (container) {
+      container.scrollTop = container.scrollHeight
+      if (showSidebar) {
+        document.body.style.overflowY = 'auto'
+      } else {
+        document.body.style.overflowY = 'hidden'
+      }
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollTop = 0
+      }
+    }
+  }, [])
 
   return (
-    <div className='max-h-screen flex flex-col'>
-      <PageHeader showSidebar={()=>setShowSidebar(true)} />
+    <div ref={scrollRef} className={`${showSidebar && 'me-4'} max-h-screen flex flex-col`}>
+      <PageHeader 
+        isSidebarOpen={showSidebar}
+        showSidebar={() => {
+          setShowSidebar(true)
+          handleSidebarToggle()
+        }
+      } />
       <section className='w-full relative'>
-        <ExpandSidebar setDisplay={()=>setShowSidebar(false)} onDisplay={showSidebar} />
+        <ExpandSidebar setDisplay={() => {
+            setShowSidebar(false)
+            handleSidebarToggle()
+          } 
+        }
+        onDisplay={showSidebar} />
         <div className="flex mt-14">
           {/* SIDEBAR */}
           <aside>
@@ -33,7 +66,7 @@ function App() {
           {/* BODY */}
           <div className="flex-grow md:ml-[4.5rem] py-3 overflow-x-hidden">
             <div className='relative h-16 z-20'>
-              <Category categories={CategoryLists} />
+              <Category isSidebarOpen={showSidebar} categories={CategoryLists} />
             </div>
             {/* VIDEO POST */}
             <PostVideo posts={videoPosts} />

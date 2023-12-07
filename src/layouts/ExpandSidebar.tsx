@@ -9,20 +9,25 @@ type Props = {
 
 function ExpandSidebar({ onDisplay, setDisplay }: Props) {
   return (
-    onDisplay &&
-    <div className='w-full z-50 h-screen overflow-y-scroll fixed bg-black bg-opacity-50'>
-      <div className={`${onDisplay ? ' translate-x-0':'translate-x-[-15rem]'} transition-transform w-[15rem] flex items-start bg-white h-full`}>
-        <div className='md:gap-3 h-header px-4 gap-2 flex items-center justify-center'>
-          <Button onClick={setDisplay} variant='ghost' size='icon'>
-            <Menu strokeWidth={1} />
-          </Button>
-          <a href="/" className='flex items-center gap-2'>
-            <PlaySquare className='text-red-200 w-7 h-7 fill-red-500'/>
-            <h1 className='text-lg font-bold text-neutral-800'>TubeTube</h1>
-          </a>
+    <>
+      {onDisplay && (
+        <div className="fixed inset-0 z-50 flex items-start bg-black bg-opacity-50 overflow-y-scroll">
+          <div
+            className={`transform ${onDisplay ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-1000 w-60 bg-white h-full`}
+          >
+            <div className="h-16 px-4 flex items-center justify-start gap-3">
+              <Button onClick={setDisplay} variant="ghost" size="icon">
+                <Menu strokeWidth={1} />
+              </Button>
+              <a href="/" className='flex items-center gap-2'>
+                <PlaySquare className='text-red-200 w-7 h-7 fill-red-500'/>
+                <h1 className='text-lg font-bold text-neutral-800'>TubeTube</h1>
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   )
 }
 

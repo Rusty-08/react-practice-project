@@ -6,9 +6,10 @@ import Image from '../components/Image'
 
 type Props = {
   showSidebar: () => void
+  isSidebarOpen: Boolean
 }
 
-function PageHeader({ showSidebar }:Props) {
+function PageHeader({ showSidebar, isSidebarOpen }:Props) {
 
   const [viewFullSearch, setViewFullSearch] = useState(false)
   const [searchContent, setSearchContent] = useState<string>('')
@@ -27,7 +28,10 @@ function PageHeader({ showSidebar }:Props) {
   return (
     // HEADER
     <>
-      <div className='flex z-20 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4'>
+      <div className={
+          `flex z-20 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4 
+          ${isSidebarOpen && 'pe-8'}`
+        }>
         <div className={`${viewFullSearch ? 'hidden' : 'flex'} md:gap-3 gap-2 h-full items-center flex-shrink-0`}>
           <Button onClick={showSidebar} variant='ghost' size='icon'>
             <Menu strokeWidth={1} />
@@ -55,11 +59,11 @@ function PageHeader({ showSidebar }:Props) {
                 type="text" 
                 placeholder='Search'
                 value={searchContent}
-                className='peer text-base flex-grow py-4 h-10 lg:ml-8 placeholder:text-neutral-500 outline-none border border-secondary-border focus:border-inset focus:border-blue-800 focus:lg:ps-[3.25rem] focus:ml-0 focus:shadow-inner px-5 pe-14 rounded-s-full'/>
+                className='peer text-base flex-grow py-4 h-10 lg:ml-8 placeholder:text-neutral-500 outline-none border border-secondary-border focus:border-inset focus:border-blue-800 focus:lg:ps-[3.25rem] focus:ml-0 focus:shadow-inner px-5 pe-10 rounded-s-full'/>
               {
                 searchContent !== '' &&
                 <Button type='button' onClick={(e)=>eraseInputValue(e)} className='absolute w-9 h-9 right-[2px]' variant="ghost" size="icon">
-                  <X />
+                  <X strokeWidth={1} />
                 </Button>
               }
               <Search strokeWidth={1} className='invisible peer-focus:lg:visible absolute z-10 left-5 w-5' />
