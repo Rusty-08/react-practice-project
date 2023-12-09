@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { ReactNode, useRef, useState } from 'react'
 import Button from '../components/Button'
 import { Menu, PlaySquare } from 'lucide-react'
 import { pages } from '../data/SidebarCategories'
@@ -8,9 +8,10 @@ import SidebarButtons from './SidebarButtons'
 type Props = {
   onDisplay: boolean
   setDisplay: () => void
+  children: ReactNode
 }
 
-function ExpandSidebar({ onDisplay, setDisplay }: Props) {
+function ExpandSidebar({ onDisplay, setDisplay, children }: Props) {
   return (
     <>
       {onDisplay && (
@@ -27,9 +28,7 @@ function ExpandSidebar({ onDisplay, setDisplay }: Props) {
                 <h1 className='text-lg font-bold text-neutral-800'>TubeTube</h1>
               </a>
             </div>
-            <div className="">
-              <SidebarButtons component={pages} />
-            </div>
+            { children }
           </div>
         </div>
       )}

@@ -1,21 +1,23 @@
-import React, { Children, ReactNode, useState } from 'react'
+import React, { Children, ComponentProps, ReactNode, useState } from 'react'
 import Button from '../components/Button'
 import { LucideIcon } from 'lucide-react'
+import { twMerge } from 'tailwind-merge'
 
 type Category = {
+  children?: ReactNode // header
   component: {
     icon: LucideIcon
     name: string
   }[]
-}
+  activePage: string
+  setActivePage: (e: string) => void
+} & ComponentProps<"div">
 
-function SidebarButtons({ component }: Category) {
-
-  const [activePage, setActivePage] = useState('Home')
-
+function SidebarButtons({ children, component, activePage, className, setActivePage }: Category) {
   return (
-    <div className='flex flex-col my-3 px-3 w-full'>
-      {component.map(item => (
+    <div className={twMerge('flex flex-col py-3 border-b px-3', className)}>
+      { children }
+      { component.map(item => (
         <Button  
           key={item.name}
           className={`${activePage !== item.name && 'hover:bg-secondary'} px-3.5 flex gap-5 rounded-lg py-2.5`}

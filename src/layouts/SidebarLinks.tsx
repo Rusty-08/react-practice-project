@@ -2,10 +2,13 @@ import { ArrowDownToLine, FileDown, FileVideo, FileVideo2, Film, Home } from "lu
 import Button from "../components/Button"
 import { useState } from "react"
 
-function SidebarLinks() {
-  
-  const [activeLink, setActiveLink] = useState(0)
+type Props = {
+  activePage: string
+  setActivePage: (e: string) => void
+}
 
+function SidebarLinks({ activePage, setActivePage }: Props) {
+  
   const linkLists = [
     { name: 'Home', icon: Home },
     { name: 'Shorts', icon: FileVideo2 },
@@ -20,10 +23,10 @@ function SidebarLinks() {
         <Button 
           key={index}
           variant="ghost"
-          onClick={()=>setActiveLink(index)}
+          onClick={()=>setActivePage(link.name)}
           className="w-full py-4 rounded-lg gap-1 flex flex-col items-center"
         >
-          <link.icon className={`${ activeLink == index && "fill-secondary-dark stroke-secondary-hover" } w-5`} strokeWidth={1} />
+          <link.icon className={`${ activePage == link.name && "fill-secondary-dark stroke-secondary-hover" } w-5`} strokeWidth={1} />
           <span className="text-[0.65rem]">{ link.name }</span>
         </Button>
       ))}
