@@ -16,5 +16,5 @@ export const CategoryLists = [
   "Global news",
   "Recently uploaded",
   "Watched",
-  "New to you"
-]
+  "New to you",
+];
