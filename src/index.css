@@ -6,7 +6,3 @@
 * {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
-
-::-webkit-scrollbar-button {
-  display: none !important;
-}

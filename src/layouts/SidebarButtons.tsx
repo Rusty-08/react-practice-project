@@ -1,6 +1,6 @@
 import React, { Children, ComponentProps, ReactNode, useState } from "react";
 import Button from "../components/Button";
-import { ListVideo, LucideIcon } from "lucide-react";
+import { ListVideo, LucideIcon, Youtube } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import Image from "../components/Image";
 import { subscriptions } from "../data/Subscriptions";
@@ -68,7 +68,7 @@ function SidebarButtons({
                 isShowMore &&
                 (item.name == "Show more" || item.name == "") &&
                 "transform rotate-180"
-              }`}
+              } ${item.icon == Youtube && "fill-red-600 stroke-white"}`}
               strokeWidth={
                 activePage == item.name && item.icon == ListVideo ? 2 : 1
               }

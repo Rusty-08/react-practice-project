@@ -16,6 +16,8 @@ import SidebarButtons from "./layouts/SidebarButtons";
 import { pages } from "./data/SidebarCategories";
 import { youPages } from "./data/YouLinks";
 import { subscriptions } from "./data/Subscriptions";
+import { explore } from "./data/Explore";
+import { moreFromYouTube } from "./data/MoreFromYoutube";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -77,7 +79,7 @@ function App() {
             </Button>
           </SidebarButtons>
 
-          {/* Subscriptions page section */}
+          {/* Subscriptions section */}
           <SidebarButtons
             activePage={activePage}
             setActivePage={setActivePage}
@@ -92,8 +94,30 @@ function App() {
             showMore={() => setIsShowMoreSubs(isShowMoreSubs ? false : true)}
             isShowMore={isShowMoreSubs}
           >
-            <h4 className="px-3.5 flex items-center py-1.5 font-medium">
+            <h4 className="px-3.5 flex items-center py-1.5 pb-1 font-medium">
               Subscriptions
+            </h4>
+          </SidebarButtons>
+
+          {/* Explore section */}
+          <SidebarButtons
+            activePage={activePage}
+            setActivePage={setActivePage}
+            component={explore}
+          >
+            <h4 className="px-3.5 flex items-center py-1.5 pb-1 font-medium">
+              Explore
+            </h4>
+          </SidebarButtons>
+
+          {/* More from YouTube section */}
+          <SidebarButtons
+            activePage={activePage}
+            setActivePage={setActivePage}
+            component={moreFromYouTube}
+          >
+            <h4 className="px-3.5 flex items-center py-1.5 pb-1 font-medium">
+              More from YouTube
             </h4>
           </SidebarButtons>
         </ExpandSidebar>
