@@ -15,11 +15,13 @@ import ExpandSidebar from "./layouts/ExpandSidebar";
 import SidebarButtons from "./layouts/SidebarButtons";
 import { pages } from "./data/SidebarCategories";
 import { youPages } from "./data/YouLinks";
+import { subscriptions } from "./data/Subscriptions";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [activePage, setActivePage] = useState("Home");
-  const [isShowMore, setIsShowMore] = useState(false);
+  const [isShowMorePage, setIsShowMorePage] = useState(false);
+  const [isShowMoreSubs, setIsShowMoreSubs] = useState(false);
 
   useEffect(() => {
     if (showSidebar) {
@@ -47,31 +49,52 @@ function App() {
             setActivePage={setActivePage}
             component={pages}
           />
+
           {/* You button section */}
           <SidebarButtons
             activePage={activePage}
             setActivePage={setActivePage}
             component={
-              isShowMore
+              isShowMorePage
                 ? youPages
                 : [
                     ...youPages.slice(0, 5),
                     ...youPages.slice(youPages.length - 1),
                   ]
             }
-            showMore={() => setIsShowMore(isShowMore ? false : true)}
-            isShowMore={isShowMore}
+            showMore={() => setIsShowMorePage(isShowMorePage ? false : true)}
+            isShowMore={isShowMorePage}
           >
             <Button
               className={`${
                 activePage !== "You" && "hover:bg-secondary"
-              } px-3.5 items-center font-medium flex gap-1.5 rounded-lg py-2.5`}
+              } px-3.5 items-center font-medium flex gap-1.5 rounded-lg h-10`}
               onClick={() => setActivePage("You")}
               variant={activePage == "You" ? "default" : "ghost"}
             >
               You
               <ChevronRight size="1.3rem" strokeWidth={1} />
             </Button>
+          </SidebarButtons>
+
+          {/* Subscriptions page section */}
+          <SidebarButtons
+            activePage={activePage}
+            setActivePage={setActivePage}
+            component={
+              isShowMoreSubs
+                ? subscriptions
+                : [
+                    ...subscriptions.slice(0, 5),
+                    ...subscriptions.slice(subscriptions.length - 1),
+                  ]
+            }
+            showMore={() => setIsShowMoreSubs(isShowMoreSubs ? false : true)}
+            isShowMore={isShowMoreSubs}
+          >
+            <h4 className="px-3.5 flex items-center py-1.5 font-medium">
+              Subscriptions
+            </h4>
           </SidebarButtons>
         </ExpandSidebar>
         <div className="flex mt-14">

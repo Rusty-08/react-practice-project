@@ -68,7 +68,7 @@ function PostVideo({ posts }: Posts) {
         >
           <div className="relative min-h-[13rem] w-full">
             <Image
-              className={`${isPlaying == index && "opacity-0"} inset-0 h-full`}
+              className="inset-0 h-full"
               src={post.image}
               variant="video"
             />
@@ -86,7 +86,7 @@ function PostVideo({ posts }: Posts) {
             />
             {isPlaying == index && (
               <Button
-                className="absolute hover:bg-opacity-40 hover:backdrop-blur-sm bg-opacity-20 rounded-md w-9 h-9 z-[15] top-2 right-2"
+                className="absolute hover:bg-opacity-40 hover:bg-opacity-70 rounded-md w-9 h-9 z-[15] top-2 right-2"
                 variant="dark"
                 size="icon"
                 onClick={(e) => {

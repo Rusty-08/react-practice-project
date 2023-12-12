@@ -42,16 +42,14 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
               key={category}
               variant={activeCategory === index ? "dark" : "default"}
               onClick={() => setActiveCategory(index)}
-              className={`
-                ${scrollPosition > 0 && index == 0 ? "invisible" : "visible"}
-                px-3 py-1.5 text-sm font-medium rounded-lg whitespace-nowrap`}
+              className="px-3 py-1.5 text-sm font-medium rounded-lg whitespace-nowrap"
             >
               {category}
             </Button>
           ))}
         </div>
       </div>
-      <div className="absolute w-20 -translate-x-4 bg-gradient-to-r from-white from-50% to-transparent">
+      <div className="absolute z-50 w-[6.8rem] -translate-x-4 bg-gradient-to-r from-white from-50% to-transparent">
         {scrollPosition > 0 && (
           <Button
             variant="ghost"
@@ -59,7 +57,7 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
             onClick={() => {
               const newScroll = scrollPosition - SCROLL_AMOUNT;
               return containerRef.current?.scrollTo({
-                left: newScroll,
+                left: scrollPosition < 10 ? 0 : newScroll,
                 behavior: "smooth",
               });
             }}
@@ -68,7 +66,7 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
           </Button>
         )}
       </div>
-      <div className="absolute right-0 w-20 -translate-x-2 flex items-end justify-end bg-gradient-to-l from-white from-50% to-transparent">
+      <div className="absolute z-50 right-0 w-[6.8rem] -translate-x-2 flex items-end justify-end bg-gradient-to-l from-white from-50% to-transparent">
         {!isScrollEnded && (
           <Button
             variant="ghost"
@@ -76,7 +74,10 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
             onClick={() => {
               const newScroll = scrollPosition + SCROLL_AMOUNT;
               return containerRef.current?.scrollTo({
-                left: newScroll,
+                left:
+                  scrollPosition > containerRef.current.scrollWidth - 10
+                    ? 0
+                    : newScroll,
                 behavior: "smooth",
               });
             }}
