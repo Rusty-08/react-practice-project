@@ -3,7 +3,7 @@ import Button from "../components/Button";
 import { ListVideo, LucideIcon, Youtube } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 import Image from "../components/Image";
-import { subscriptions } from "../data/Subscriptions";
+import { subscriptions } from "../data/sidebar/Subscriptions";
 
 type Category = {
   children?: ReactNode;

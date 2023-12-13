@@ -9,15 +9,14 @@ import Shorts from "./layouts/Shorts";
 import { shorts } from "./data/Shorts";
 import { ChevronDown, ChevronRight, FileVideo2 } from "lucide-react";
 import Button from "./components/Button";
-import SeeMoreSeparator from "./components/SeeMoreSeparator";
-import ShortsHeader from "./layouts/ShortsHeader";
 import ExpandSidebar from "./layouts/ExpandSidebar";
 import SidebarButtons from "./layouts/SidebarButtons";
-import { pages } from "./data/SidebarCategories";
-import { youPages } from "./data/YouLinks";
-import { subscriptions } from "./data/Subscriptions";
-import { explore } from "./data/Explore";
-import { moreFromYouTube } from "./data/MoreFromYoutube";
+import { pages } from "./data/sidebar/SidebarCategories";
+import { youPages } from "./data/sidebar/YouLinks";
+import { subscriptions } from "./data/sidebar/Subscriptions";
+import { explore } from "./data/sidebar/Explore";
+import { moreFromYouTube } from "./data/sidebar/MoreFromYoutube";
+import { options } from "./data/sidebar/Options";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -120,6 +119,13 @@ function App() {
               More from YouTube
             </h4>
           </SidebarButtons>
+
+          {/* Additional Options section */}
+          <SidebarButtons
+            activePage={activePage}
+            setActivePage={setActivePage}
+            component={options}
+          />
         </ExpandSidebar>
         <div className="flex mt-14">
           {/* SIDEBAR */}

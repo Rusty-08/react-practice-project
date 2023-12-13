@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import sampleImage from "../assets/luffy.jpg";
+import sampleImage from "../../assets/luffy.jpg";
 
 export const subscriptions = [
   { image: sampleImage, name: "Muse Asia" },

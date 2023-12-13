@@ -34,7 +34,7 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
       <div
         ref={containerRef}
         onScroll={handleScroll}
-        className="scroll-smooth py-3 overflow-x-scroll scrollbar-hide"
+        className="scroll-smooth py-3 overflow-x-scroll scrollbar-none"
       >
         <div className="flex scroll-smooth gap-3 whitespace-nowrap w-[max-content]">
           {categories.map((category, index) => (

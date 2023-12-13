@@ -1,8 +1,9 @@
 import React, { ReactNode, useRef, useState } from "react";
 import Button from "../components/Button";
-import { Menu, PlaySquare } from "lucide-react";
-import { pages } from "../data/SidebarCategories";
+import { Copyright, Menu, PlaySquare } from "lucide-react";
+import { pages } from "../data/sidebar/SidebarCategories";
 import SidebarButtons from "./SidebarButtons";
+import { aboutLinks, policyLinks } from "../data/sidebar/AdditionalLinks";
 
 type Props = {
   onDisplay: boolean;
@@ -29,7 +30,36 @@ function ExpandSidebar({ onDisplay, setDisplay, children }: Props) {
                 <h1 className="text-lg font-bold text-neutral-800">TubeTube</h1>
               </a>
             </div>
-            <div className="overflow-y-auto flex-grow pb-8">{children}</div>
+            <div className="overflow-y-auto scrollbar-track-transparent hover:scrollbar-track-inherit flex-grow">
+              {children}
+
+              <div className="flex py-3 mx-3.5 px-3 flex-col gap-2">
+                <div className="flex flex-wrap">
+                  {aboutLinks.map((link) => (
+                    <a
+                      className="font-medium mr-2 text-secondary-text text-[0.85rem]"
+                      href={`${link.split(" ").join("").toLowerCase()}`}
+                    >
+                      {link}
+                    </a>
+                  ))}
+                </div>
+                <div className="flex flex-wrap">
+                  {policyLinks.map((link) => (
+                    <a
+                      className="font-medium mr-2 text-secondary-text text-[0.85rem]"
+                      href={`${link.split(" ").join("").toLowerCase()}`}
+                    >
+                      {link}
+                    </a>
+                  ))}
+                </div>
+                <span className="flex text-secondary-text gap-1 text-xs items-center">
+                  <Copyright className="w-3" strokeWidth={1} />
+                  {`${new Date().getFullYear()} Google LLC`}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       )}
