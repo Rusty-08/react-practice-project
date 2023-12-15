@@ -1,8 +1,8 @@
 import { Flag, HelpCircle, MessageSquarePlus, Settings } from "lucide-react";
 
 export const options = [
-  { icon: Settings, name: "Trending" },
-  { icon: Flag, name: "Music" },
-  { icon: HelpCircle, name: "Movies" },
-  { icon: MessageSquarePlus, name: "Gaming" },
+  { icon: Settings, name: "Settings" },
+  { icon: Flag, name: "Report history" },
+  { icon: HelpCircle, name: "Help" },
+  { icon: MessageSquarePlus, name: "Send feedback" },
 ];

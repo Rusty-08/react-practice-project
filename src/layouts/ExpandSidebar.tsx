@@ -15,11 +15,11 @@ function ExpandSidebar({ onDisplay, setDisplay, children }: Props) {
   return (
     <>
       {onDisplay && (
-        <div className="fixed h-screen w-full z-50 flex items-start bg-black bg-opacity-50 overflow-y-scroll">
+        <div className="fixed h-screen w-full z-50 flex items-start bg-black bg-opacity-50 overflow-y-scroll scrollbar scrollbar-track-white">
           <div
             className={`transform ${
               onDisplay ? "translate-x-0" : "-translate-x-full"
-            } transition-transform duration-1000 w-60 bg-white h-full flex flex-col`}
+            } transition-transform duration-1000 pr-1 w-60 bg-white h-full flex flex-col`}
           >
             <div className="h-header flex-shrink-0 px-4 flex items-center justify-start gap-3">
               <Button onClick={setDisplay} variant="ghost" size="icon">
@@ -30,9 +30,9 @@ function ExpandSidebar({ onDisplay, setDisplay, children }: Props) {
                 <h1 className="text-lg font-bold text-neutral-800">TubeTube</h1>
               </a>
             </div>
-            <div className="overflow-y-auto scrollbar-track-transparent hover:scrollbar-track-inherit flex-grow">
-              {children}
 
+            <div className="overflow-y-scroll mb-1 scrollbar-thin scrollbar-thumb-neutral-400 scrollbar-thumb-rounded-full flex-grow">
+              {children}
               <div className="flex py-3 mx-3.5 px-3 flex-col gap-2">
                 <div className="flex flex-wrap">
                   {aboutLinks.map((link) => (

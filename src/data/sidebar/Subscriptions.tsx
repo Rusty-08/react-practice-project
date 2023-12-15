@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, PlusCircle } from "lucide-react";
 import sampleImage from "../../assets/luffy.jpg";
 
 export const subscriptions = [
@@ -16,5 +16,6 @@ export const subscriptions = [
   { image: sampleImage, name: "Wes Bos" },
   { image: sampleImage, name: "Tailwind Labs" },
   { image: sampleImage, name: "Net Ninja" },
+  { icon: PlusCircle, name: "Browse channels" },
   { icon: ChevronDown, name: "" },
 ];

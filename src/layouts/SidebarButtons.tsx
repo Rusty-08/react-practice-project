@@ -29,7 +29,10 @@ function SidebarButtons({
 }: Category) {
   return (
     <div
-      className={twMerge("flex flex-col py-3 border-b px-3 pe-2", className)}
+      className={twMerge(
+        "flex flex-col py-3 border-b px-3 pe-2",
+        className
+      )}
     >
       {children}
       {component.map((item) => (
@@ -58,22 +61,25 @@ function SidebarButtons({
               alt=""
             />
           )}
-          {item.icon && (
-            <item.icon
-              className={`${
-                activePage == item.name &&
-                item.icon !== ListVideo &&
-                "fill-secondary-dark stroke-secondary-hover"
-              } w-5 h-5 ${
-                isShowMore &&
-                (item.name == "Show more" || item.name == "") &&
-                "transform rotate-180"
-              } ${item.icon == Youtube && "fill-red-600 stroke-white"}`}
-              strokeWidth={
-                activePage == item.name && item.icon == ListVideo ? 2 : 1
-              }
-            />
-          )}
+          {item.icon &&
+            (item.icon !== Youtube ? (
+              <item.icon
+                className={`${
+                  activePage == item.name &&
+                  item.icon !== ListVideo &&
+                  "fill-secondary-dark stroke-secondary-hover"
+                } w-5 h-5 ${
+                  isShowMore &&
+                  (item.name == "Show more" || item.name == "") &&
+                  "transform rotate-180"
+                }`}
+                strokeWidth={
+                  activePage == item.name && item.icon == ListVideo ? 2 : 1
+                }
+              />
+            ) : (
+              <item.icon className="fill-[#FF0000] w-5 h-5 stroke-white" />
+            ))}
           <span
             className={`${
               activePage == item.name && "font-medium"
@@ -85,7 +91,7 @@ function SidebarButtons({
                 : item.name
               : isShowMore
               ? "Show less"
-              : `Show ${subscriptions.length - 6} more`}
+              : `Show ${subscriptions.length - 7} more`}
           </span>
         </Button>
       ))}
