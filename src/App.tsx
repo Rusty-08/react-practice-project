@@ -33,7 +33,7 @@ function App() {
   }, [showSidebar]);
 
   return (
-    <div className={`${showSidebar && "me-4"} max-h-screen flex flex-col`}>
+    <div className={`${showSidebar && "lg:me-4"} max-h-screen flex flex-col`}>
       <PageHeader
         isSidebarOpen={showSidebar}
         showSidebar={() => setShowSidebar(true)}

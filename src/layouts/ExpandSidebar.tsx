@@ -21,7 +21,7 @@ function ExpandSidebar({ onDisplay, setDisplay, children }: Props) {
               onDisplay ? "translate-x-0" : "-translate-x-full"
             } transition-transform duration-1000 pr-1 w-60 bg-white h-full flex flex-col`}
           >
-            <div className="h-header flex-shrink-0 px-4 flex items-center justify-start gap-3">
+            <div className="h-header flex-shrink-0 px-4 flex items-center justify-start md:gap-3 gap-2">
               <Button onClick={setDisplay} variant="ghost" size="icon">
                 <Menu strokeWidth={1} />
               </Button>
@@ -37,6 +37,7 @@ function ExpandSidebar({ onDisplay, setDisplay, children }: Props) {
                 <div className="flex flex-wrap">
                   {aboutLinks.map((link) => (
                     <a
+                      key={link}
                       className="font-medium mr-2 text-secondary-text text-[0.85rem]"
                       href={`${link.split(" ").join("").toLowerCase()}`}
                     >

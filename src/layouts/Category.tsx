@@ -15,26 +15,41 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
   const [isScrollEnded, setIsScrollEnded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+  const handleScroll = (
+    e: React.UIEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
+  ) => {
     const container = e.currentTarget;
 
-    container.clientWidth + container.scrollLeft >= container.scrollWidth
+    container.clientWidth + container.scrollLeft + 1 >= container.scrollWidth
       ? setIsScrollEnded(true)
       : setIsScrollEnded(false);
 
     setScrollPosition(container.scrollLeft);
+
+    if (isScrollEnded) {
+      console.log("end");
+    }
+
+    console.log("clientWidth:" + container.clientWidth);
+    console.log("scrollLeft:" + container.scrollLeft);
+    console.log("scrollWidth:" + container.scrollWidth);
+  };
+
+  const handleOnTouchScroll = (e: React.TouchEvent<HTMLDivElement>) => {
+    handleScroll(e);
   };
 
   return (
     <div
       className={`${
-        isSidebarOpen && "me-4"
+        isSidebarOpen && "lg:me-4"
       } ps-6 pe-6 bg-white scroll-smooth right-0 md:left-[4.5rem] left-0 flex items-center fixed top-[3.5rem]`}
     >
       <div
         ref={containerRef}
         onScroll={handleScroll}
-        className="scroll-smooth py-3 overflow-x-scroll scrollbar-none"
+        onTouchMove={handleOnTouchScroll}
+        className="scroll-smooth transition-all py-3 overflow-x-scroll scrollbar-none"
       >
         <div className="flex scroll-smooth gap-3 whitespace-nowrap w-[max-content]">
           {categories.map((category, index) => (
@@ -49,7 +64,7 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
           ))}
         </div>
       </div>
-      <div className="absolute z-50 w-[6.8rem] -translate-x-4 bg-gradient-to-r from-white from-50% to-transparent">
+      <div className="absolute z-50 w-20 md:w-[6.8rem] -translate-x-4 bg-gradient-to-r from-white from-50% to-transparent">
         {scrollPosition > 0 && (
           <Button
             variant="ghost"
@@ -57,7 +72,7 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
             onClick={() => {
               const newScroll = scrollPosition - SCROLL_AMOUNT;
               return containerRef.current?.scrollTo({
-                left: scrollPosition < 10 ? 0 : newScroll,
+                left: newScroll,
                 behavior: "smooth",
               });
             }}
@@ -66,7 +81,7 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
           </Button>
         )}
       </div>
-      <div className="absolute z-50 right-0 w-[6.8rem] -translate-x-2 flex items-end justify-end bg-gradient-to-l from-white from-50% to-transparent">
+      <div className="absolute z-50 right-0 w-20 md:w-[6.8rem] -translate-x-2 flex items-end justify-end bg-gradient-to-l from-white from-50% to-transparent">
         {!isScrollEnded && (
           <Button
             variant="ghost"
@@ -74,10 +89,7 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
             onClick={() => {
               const newScroll = scrollPosition + SCROLL_AMOUNT;
               return containerRef.current?.scrollTo({
-                left:
-                  scrollPosition > containerRef.current.scrollWidth - 10
-                    ? 0
-                    : newScroll,
+                left: newScroll,
                 behavior: "smooth",
               });
             }}

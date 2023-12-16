@@ -39,7 +39,7 @@ function PageHeader({ showSidebar, isSidebarOpen }: Props) {
     <>
       <div
         className={`flex z-50 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4 
-          ${isSidebarOpen && "pe-8"}`}
+          ${isSidebarOpen && "lg:pe-8"}`}
       >
         <div
           className={`${
@@ -131,7 +131,7 @@ function PageHeader({ showSidebar, isSidebarOpen }: Props) {
           <Button variant="notification" size="icon">
             <Bell strokeWidth={1} />
           </Button>
-          <a href="/" className="flex ml-1 items-center">
+          <a href="/" className="flex ml-2.5 md:ml-1 items-center">
             <Image variant="profile" src={profle} />
           </a>
         </div>

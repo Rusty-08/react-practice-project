@@ -27,15 +27,13 @@ type ImageProps = VariantProps<typeof imageStyles> & ComponentProps<"img">;
 function Image({ variant, className, ...props }: ImageProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const handleImageLoad = () => setImageLoaded(true);
-
   return (
     <>
       {!imageLoaded && (
         <div className={`${imageStyles({ variant })} bg-secondary-hover`} />
       )}
       <img
-        onLoad={handleImageLoad}
+        onLoad={() => setImageLoaded(true)}
         style={{ display: imageLoaded ? "flex" : "none" }}
         {...props}
         className={twMerge(imageStyles({ variant }), className)}

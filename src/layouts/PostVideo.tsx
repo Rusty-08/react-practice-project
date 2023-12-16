@@ -2,7 +2,7 @@ import { SetStateAction, createRef, useEffect, useRef, useState } from "react";
 import Image from "../components/Image";
 import React from "react";
 import Button from "../components/Button";
-import { Volume2, VolumeX } from "lucide-react";
+import { Pause, Play, Volume2, VolumeX } from "lucide-react";
 
 type Posts = {
   posts: Props[];
@@ -22,15 +22,17 @@ type Props = {
 function PostVideo({ posts }: Posts) {
   const videoRefs = useRef(posts.map(() => createRef<HTMLVideoElement>()));
   const [isPlaying, setIsPlaying] = useState(-1);
-  const [isSoundOn, setIsSoundOn] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
   let timeOut = 0;
 
   const playVideo = (index: number) => {
     const videoElement = videoRefs.current[index].current;
     if (videoElement) {
       timeOut = setTimeout(() => {
-        videoElement.play();
         setIsPlaying(index);
+        setIsVideoPlaying(true);
+        videoElement.play();
       }, 1000);
     }
   };
@@ -40,6 +42,7 @@ function PostVideo({ posts }: Posts) {
     if (videoElement) {
       videoElement.pause();
       setIsPlaying(-1);
+      setIsVideoPlaying(false);
       clearTimeout(timeOut);
     }
   };
@@ -56,7 +59,7 @@ function PostVideo({ posts }: Posts) {
   }, []);
 
   return (
-    <div className="grid px-6 pb-3 md:grid-cols-3 xl:grid-cols-4 grid-cols-1 md:gap-4">
+    <div className="grid px-6 pb-3 grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] md:gap-4">
       {posts.map((post, index) => (
         <a
           href={`/watch?v=${index + 1}`}
@@ -68,7 +71,9 @@ function PostVideo({ posts }: Posts) {
         >
           <div className="relative min-h-[13rem] w-full">
             <Image
-              className="inset-0 h-full"
+              className={`${
+                isVideoPlaying && isPlaying == index && "opacity-0"
+              } inset-0 z-20 h-full`}
               src={post.image}
               variant="video"
             />
@@ -78,29 +83,15 @@ function PostVideo({ posts }: Posts) {
             <video
               src={post.video}
               className={`${
-                isPlaying == index ? "z-10 rounded-none" : "z-[-1] rounded-xl"
-              } w-full h-full object-cover absolute inset-0 transition-all duration-300 delay-200 ease-in`}
+                isPlaying == index && isVideoPlaying
+                  ? "opacity-1 rounded-none"
+                  : "opacity-0 rounded-xl"
+              } w-full h-full object-cover absolute inset-0 transition-[border-radius] duration-300 delay-200 ease-in`}
               ref={videoRefs.current[index]}
               disablePictureInPicture
-              muted={isPlaying == index && isSoundOn ? false : true}
+              controls
+              muted
             />
-            {isPlaying == index && (
-              <Button
-                className="absolute hover:bg-opacity-40 hover:bg-opacity-70 rounded-md w-9 h-9 z-[15] top-2 right-2"
-                variant="dark"
-                size="icon"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsSoundOn(isSoundOn ? false : true);
-                }}
-              >
-                {isSoundOn && isPlaying == index ? (
-                  <Volume2 strokeWidth={1} />
-                ) : (
-                  <VolumeX strokeWidth={1} />
-                )}
-              </Button>
-            )}
           </div>
           <div className="flex gap-2 py-3">
             <Image src={post.profile} variant="profile" />
