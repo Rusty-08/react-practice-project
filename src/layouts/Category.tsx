@@ -42,7 +42,7 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
   return (
     <div
       className={`${
-        isSidebarOpen && "lg:me-4"
+        isSidebarOpen && "lg:me-[0.95rem]"
       } ps-6 pe-6 bg-white scroll-smooth right-0 md:left-[4.5rem] left-0 flex items-center fixed top-[3.5rem]`}
     >
       <div

@@ -39,7 +39,7 @@ function PageHeader({ showSidebar, isSidebarOpen }: Props) {
     <>
       <div
         className={`flex z-50 bg-white h-header w-full fixed top-0 gap-10 lg:gap-24 justify-between py-2 px-4 
-          ${isSidebarOpen && "lg:pe-8"}`}
+          ${isSidebarOpen && "lg:pe-[1.95rem]"}`}
       >
         <div
           className={`${

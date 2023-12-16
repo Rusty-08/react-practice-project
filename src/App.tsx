@@ -33,12 +33,22 @@ function App() {
   }, [showSidebar]);
 
   return (
-    <div className={`${showSidebar && "lg:me-4"} max-h-screen flex flex-col`}>
+    <div
+      className={`${
+        showSidebar && "lg:me-[0.95rem]"
+      } max-h-screen flex flex-col`}
+    >
       <PageHeader
         isSidebarOpen={showSidebar}
         showSidebar={() => setShowSidebar(true)}
       />
       <section className="w-full">
+        <div
+          onClick={() => setShowSidebar(false)}
+          className={`z-[77] fixed transition-[background-color] duration-300 delay-300 overflow-y-scroll scrollbar scrollbar-track-white bg-opacity-50 w-full h-screen ${
+            showSidebar ? "visible bg-black" : "hidden bg-transparent"
+          }`}
+        ></div>
         <ExpandSidebar
           setDisplay={() => setShowSidebar(false)}
           onDisplay={showSidebar}
