@@ -13,6 +13,7 @@ import profle from "../assets/luffy.jpg";
 import React, { useRef, useState } from "react";
 import Button from "../components/Button";
 import Image from "../components/Image";
+import Notification from "./Notification";
 
 type Props = {
   showSidebar: () => void;
@@ -49,7 +50,7 @@ function PageHeader({ showSidebar, isSidebarOpen }: Props) {
           <Button onClick={showSidebar} variant="ghost" size="icon">
             <Menu strokeWidth={1} />
           </Button>
-          <a href="/" className="flex items-center gap-2">
+          <a title="TubeTube Home" href="/" className="flex items-center gap-2">
             <PlaySquare className="text-red-100 w-7 h-7 fill-[#FF0000]" />
             <h1 className="text-lg font-bold text-neutral-800">TubeTube</h1>
           </a>
@@ -128,10 +129,8 @@ function PageHeader({ showSidebar, isSidebarOpen }: Props) {
           <Button className="hidden md:flex" variant="ghost" size="icon">
             <Video strokeWidth={1} />
           </Button>
-          <Button variant="notification" size="icon">
-            <Bell strokeWidth={1} />
-          </Button>
-          <a href="/" className="flex ml-2.5 md:ml-1 items-center">
+          <Notification />
+          <a href="/" className="flex ml-2.5 items-center">
             <Image variant="profile" src={profle} />
           </a>
         </div>

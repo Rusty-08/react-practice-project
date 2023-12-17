@@ -29,6 +29,7 @@ function SidebarLinks({ activePage, setActivePage }: Props) {
         <Button
           key={index}
           variant="ghost"
+          title={link.name}
           onClick={() => setActivePage(link.name)}
           className="w-full py-4 rounded-lg gap-1 flex flex-col items-center"
         >

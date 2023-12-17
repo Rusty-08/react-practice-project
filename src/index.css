@@ -7,7 +7,7 @@
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
-::-webkit-scrollbar-thumb {
+.sidebar::-webkit-scrollbar-thumb {
   background-color: transparent !important;
 }
 

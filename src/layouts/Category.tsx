@@ -55,6 +55,7 @@ function Category({ categories, isSidebarOpen }: CatoryProps) {
           {categories.map((category, index) => (
             <Button
               key={category}
+              title={category}
               variant={activeCategory === index ? "dark" : "default"}
               onClick={() => setActiveCategory(index)}
               className="px-3 py-1.5 text-sm font-medium rounded-lg whitespace-nowrap"

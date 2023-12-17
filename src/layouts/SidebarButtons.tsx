@@ -29,15 +29,13 @@ function SidebarButtons({
 }: Category) {
   return (
     <div
-      className={twMerge(
-        "flex flex-col py-3 border-b px-3 pe-2",
-        className
-      )}
+      className={twMerge("flex flex-col py-3 border-b px-3 pe-2", className)}
     >
       {children}
       {component.map((item) => (
         <Button
           key={item.name}
+          title={item.name}
           className={`${
             activePage !== item.name && "hover:bg-secondary"
           } px-3.5 flex items-center ${item.image && "gap-5"} ${
