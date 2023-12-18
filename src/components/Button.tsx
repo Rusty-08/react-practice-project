@@ -15,7 +15,7 @@ const buttonStyles = cva(["transition-colors"], {
       ],
       separator: ["bg-white", "hover:bg-neutral-200"],
       notification: [
-        "hover:bg-gray-200 before:content-['2'] before:text-white before:flex before:items-center before:justify-center before:rounded-full before:border-2 before:border-white before:absolute before:top-[0.1rem] text-xs before:right-0 before:bg-red-600 before:w-5 before:h-5 relative",
+        "hover:bg-gray-200 before:text-white before:flex before:items-center before:justify-center before:rounded-full before:border-2 before:border-white before:absolute before:top-[0.1rem] before:text-[0.7rem] before:right-0 before:bg-red-600 before:w-5 before:h-5 relative",
       ],
       primary: ["text-blue-600 text-sm font-medium hover:bg-sky-100"],
     },

@@ -49,4 +49,11 @@ export const notification = [
     name: "Clément Mihailescu",
     image: img6,
   },
+  {
+    profile: profile,
+    title: "React Hooks Course - All React Hooks Explained",
+    date: '2 weeks ago',
+    name: "Clément Mihailescu",
+    image: img6,
+  },
 ]

@@ -27,7 +27,7 @@ function ExpandSidebar({ onDisplay, setDisplay, children }: Props) {
           <h1 className="text-lg font-bold text-neutral-800">TubeTube</h1>
         </a>
       </div>
-      <div className="sidebar overflow-y-scroll mb-1 scrollbar-thin scrollbar-thumb-rounded-full transition-all duration-300 ease-linear flex-grow">
+      <div className="hover-scroll overflow-y-scroll mb-1 scrollbar-thin scrollbar-thumb-rounded-full transition-all duration-300 ease-linear flex-grow">
         {children}
         <div className="flex py-3 mx-3.5 px-3 flex-col gap-2">
           <div className="flex flex-wrap">
@@ -44,6 +44,7 @@ function ExpandSidebar({ onDisplay, setDisplay, children }: Props) {
           <div className="flex flex-wrap">
             {policyLinks.map((link) => (
               <a
+                key={link}
                 className="font-medium mr-2 text-secondary-text text-[0.85rem]"
                 href={`${link.split(" ").join("").toLowerCase()}`}
               >
