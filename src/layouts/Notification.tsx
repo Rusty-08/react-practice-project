@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { EventHandler, useEffect, useRef, useState } from "react";
 import { notification } from "../data/Notifications";
 import Button from "../components/Button";
 import Image from "../components/Image";
 import { Bell, Dot, MoreVertical, Settings } from "lucide-react";
+import useClickOutside from "../components/ClickOutside";
 
 function Notification() {
-  const [showNotification, setShowNotification] = useState(false);
-  const [isViewed, setIsViewed] = useState(false);
   const [isUnread, setIsUnread] = useState(new Array<boolean>(9).fill(false));
+  const [notificationRef, showNotification, setShowNotification] =
+    useClickOutside(false);
+  const [isViewed, setIsViewed] = useState(false);
 
   return (
-    <div className="md:relative">
+    <div ref={notificationRef} className="md:relative">
       <Button
-        variant="notification"
-        className={
-          isViewed
-            ? "before:hidden"
-            : `before:content-['${String(notification.length)}']`
-        }
+        variant="ghost"
+        className="relative"
         size="icon"
         onClick={() => {
           setShowNotification(!showNotification);
@@ -28,6 +26,11 @@ function Notification() {
           className={showNotification ? "fill-secondary-dark" : ""}
           strokeWidth={1}
         />
+        {!isViewed && (
+          <div className="absolute w-5 h-5 top-0.5 p-0 text-xs text-[0.7rem] right-0.5 bg-red-600 text-white rounded-full border-2 border-white flex items-center justify-center">
+            {notification.length}
+          </div>
+        )}
       </Button>
       {showNotification && (
         <div className="absolute overflow-hidden transition-all duration-300 right-0 z-10 mt-2 w-full max-w-[28rem] md:w-[28rem] origin-top-right sm:right-0 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">

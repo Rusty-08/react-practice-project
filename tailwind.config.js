@@ -13,7 +13,8 @@ export default {
       },
       width: {
         ['default-sidebar']: '4.5rem',
-        body: 'calc(100vw - 5rem)'
+        body: 'calc(100vw - 4.5rem)',
+        ['sidebar-bg']: 'calc(100vw - 15rem)',
       },
       colors: {
         secondary: {

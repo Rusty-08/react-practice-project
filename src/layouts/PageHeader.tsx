@@ -9,11 +9,10 @@ import {
   ArrowLeft,
   X,
 } from "lucide-react";
-import profle from "../assets/luffy.jpg";
 import React, { useRef, useState } from "react";
 import Button from "../components/Button";
-import Image from "../components/Image";
 import Notification from "./Notification";
+import Profile from "./UserProfile";
 
 type Props = {
   showSidebar: () => void;
@@ -130,9 +129,7 @@ function PageHeader({ showSidebar, isSidebarOpen }: Props) {
             <Video strokeWidth={1} />
           </Button>
           <Notification />
-          <a href="/" className="flex ml-2.5 items-center">
-            <Image variant="profile" src={profle} />
-          </a>
+          <Profile />
         </div>
       </div>
     </>
