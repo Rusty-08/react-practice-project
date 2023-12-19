@@ -17,7 +17,8 @@ function Notification() {
         variant="ghost"
         className="relative"
         size="icon"
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
           setShowNotification(!showNotification);
           setIsViewed(true);
         }}

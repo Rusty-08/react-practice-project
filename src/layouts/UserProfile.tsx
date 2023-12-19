@@ -1,8 +1,9 @@
 import Button from "../components/Button";
 import profile from "../assets/luffy.jpg";
-import { Bell, Settings } from "lucide-react";
+import { Bell, ChevronRight, Settings } from "lucide-react";
 import useClickOutside from "../components/ClickOutside";
 import Image from "../components/Image";
+import { profileOptions } from "../data/ProfileOptions";
 
 function Profile() {
   const [profileRef, showProfile, setShowProfile] = useClickOutside(false);
@@ -37,8 +38,27 @@ function Profile() {
             style={{
               height: "calc(100vh - 10rem)",
             }}
-            className="hover-scroll overflow-y-scroll md:scrollbar-thin"
-          ></div>
+            className="hover-scroll overflow-y-scroll scrollbar-thin"
+          >
+            {profileOptions.map((section) => (
+              <div className="flex w-full flex-col py-2 border-b">
+                {section.map((item) => (
+                  <Button
+                    className="rounded-none px-5 py-2.5 flex justify-between"
+                    variant="ghost"
+                  >
+                    <div className="flex gap-5">
+                      <item.icon className="w-5 h-5" strokeWidth={1} />
+                      <span className="text-sm">{item.name}</span>
+                    </div>
+                    {item.extend && (
+                      <ChevronRight className="w-5 h-5" strokeWidth={1} />
+                    )}
+                  </Button>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
